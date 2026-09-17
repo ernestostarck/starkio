@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import "../styles/globals.css";
 import CookieBanner from "@/components/CookieBanner";
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL ?? "https://starkio.io";
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://starkio.io";
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),
