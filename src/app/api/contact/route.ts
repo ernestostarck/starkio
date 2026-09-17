@@ -1,7 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
 
-const resend = new Resend(process.env.RESEND_API_KEY);
 const CONTACT_TO_EMAIL = process.env.CONTACT_TO_EMAIL ?? "hola@starkio.io";
 const EMAIL_REGEX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -68,7 +67,13 @@ export async function POST(req: NextRequest) {
     return jsonError("El email no es válido.", 400);
   }
 
+  const resendApiKey = process.env.RESEND_API_KEY;
+  if (!resendApiKey) {
+    return jsonError("El formulario de contacto no está disponible temporalmente.", 503);
+  }
+
   try {
+    const resend = new Resend(resendApiKey);
     await resend.emails.send({
       from: "Starkio Labs <noreply@starkio.io>",
       to: [CONTACT_TO_EMAIL],
