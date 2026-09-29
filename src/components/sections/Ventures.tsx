@@ -398,8 +398,8 @@ export default function Ventures() {
                             <Image
                               src={active.connectionSvg}
                               alt={`Diagrama de integración de ${active.name} con Plataforma Central Starkio`}
-                              width={680}
-                              height={90}
+                              width={700}
+                              height={96}
                               className="w-full h-auto object-contain"
                               priority
                             />
