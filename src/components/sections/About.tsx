@@ -26,6 +26,7 @@ const holdingPillars = [
     accent: "#60A5FA",
     soft: "#BFDBFE",
     borderGlow: "from-[#2563EB]/20 to-transparent",
+    tags: ["Código 100% Propietario", "Cero Dependencias Frágiles", "Arquitectura Auditable"],
   },
   {
     number: "02",
@@ -36,6 +37,7 @@ const holdingPillars = [
     accent: "#34D399",
     soft: "#A7F3D0",
     borderGlow: "from-[#059669]/20 to-transparent",
+    tags: ["Diseño Modular", "Alta Disponibilidad", "Control Técnico Integral"],
   },
   {
     number: "03",
@@ -46,14 +48,39 @@ const holdingPillars = [
     accent: "#C084FC",
     soft: "#EDE9FE",
     borderGlow: "from-[#7C3AED]/20 to-transparent",
+    tags: ["Soluciones Verticales", "Infraestructura Esencial", "Valor Económico Medible"],
   },
 ];
 
 const holdingStats = [
-  { label: "Propiedad Intelectual", value: "100%", sub: "Activos propios" },
-  { label: "Empresas en Portafolio", value: "02", sub: "Aqualis & Blazon" },
-  { label: "Arquitectura", value: "Propietaria", sub: "Desarrollo in-house" },
-  { label: "Horizonte Operativo", value: "Perpetuo", sub: "Visión de largo plazo" },
+  {
+    value: "100%",
+    label: "Propiedad Intelectual",
+    sub: "Código y arquitectura propietarios",
+    accent: "#34D399",
+    badge: "In-House",
+  },
+  {
+    value: "02",
+    label: "Empresas en Portafolio",
+    sub: "Aqualis & Blazon en producción",
+    accent: "#60A5FA",
+    badge: "Filiales",
+  },
+  {
+    value: "03",
+    label: "Núcleos Tecnológicos",
+    sub: "Data, Software & Inteligencia Artificial",
+    accent: "#818CF8",
+    badge: "Divisiones",
+  },
+  {
+    value: "∞",
+    label: "Horizonte Operativo",
+    sub: "Visión y permanencia de largo plazo",
+    accent: "#C084FC",
+    badge: "Perpetuo",
+  },
 ];
 
 const legalDossier = [
@@ -201,41 +228,77 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-16"
+          className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-20"
         >
           {holdingStats.map((stat, idx) => (
-            <div
+            <motion.div
               key={stat.label}
-              className="p-5 sm:p-6 rounded-2xl border border-white/10 bg-white/[0.02] hover:border-white/20 hover:bg-white/[0.04] transition-all duration-300 relative overflow-hidden group shadow-lg"
+              initial={{ opacity: 0, y: 15 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.4, delay: idx * 0.08 }}
+              whileHover={{ y: -3 }}
+              className="relative p-5 sm:p-6 rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.05] via-white/[0.02] to-transparent hover:border-white/20 transition-all duration-300 overflow-hidden group shadow-xl backdrop-blur-xl"
             >
-              <div className="text-2xl sm:text-3xl font-extrabold text-white tracking-tight mb-1 group-hover:scale-105 transition-transform origin-left">
-                {stat.value}
+              {/* Resplandor superior en el color de acento */}
+              <div
+                className="absolute top-0 inset-x-4 h-[1.5px] opacity-40 group-hover:opacity-100 transition-opacity duration-300"
+                style={{
+                  background: `linear-gradient(90deg, transparent, ${stat.accent}, transparent)`,
+                }}
+              />
+              <div
+                className="absolute -top-10 -right-10 size-24 rounded-full blur-2xl pointer-events-none opacity-10 group-hover:opacity-30 transition-opacity"
+                style={{ background: stat.accent }}
+              />
+
+              <div className="flex items-center justify-between mb-3">
+                <div className="text-3xl sm:text-4xl font-extrabold text-white tracking-tight">
+                  {stat.value}
+                </div>
+                <span
+                  className="text-[10px] font-bold px-2 py-0.5 rounded-full border tracking-wide uppercase font-sans"
+                  style={{
+                    borderColor: `${stat.accent}40`,
+                    background: `${stat.accent}12`,
+                    color: stat.accent,
+                  }}
+                >
+                  {stat.badge}
+                </span>
               </div>
-              <div className="text-xs font-semibold text-starkio-cloud/70 mb-0.5">
+              <div className="text-xs sm:text-sm font-bold text-white mb-1">
                 {stat.label}
               </div>
-              <div className="text-[11px] text-starkio-cloud/45 font-medium">
+              <div className="text-[11px] text-starkio-cloud/55 font-medium leading-relaxed">
                 {stat.sub}
               </div>
-            </div>
+            </motion.div>
           ))}
         </motion.div>
 
         {/* LOS TRES PILARES FUNDACIONALES DEL HOLDING */}
-        <div>
-          <div className="text-center max-w-2xl mx-auto mb-10">
-            <p className="text-xs font-semibold tracking-wider text-[#34D399] uppercase mb-2">
-              ARQUITECTURA DE VALOR
-            </p>
-            <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
-              Los pilares que sostienen cada filial.
+        <div className="relative">
+          {/* Luz ambiental sutil detrás de los pilares */}
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[350px] bg-gradient-to-r from-[#6C63FF]/8 via-[#34D399]/6 to-[#7C3AED]/8 rounded-full blur-[130px] pointer-events-none" />
+
+          <div className="text-center max-w-2xl mx-auto mb-12 relative z-10">
+            <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider border border-[#34D399]/30 bg-[#34D399]/10 text-[#34D399] mb-3 shadow-[0_0_14px_rgba(52,211,153,0.15)]">
+              <span className="size-1.5 rounded-full bg-[#34D399] animate-pulse" />
+              Arquitectura de Valor
+            </span>
+            <h3 className="text-3xl sm:text-4xl md:text-5xl font-extrabold text-white tracking-tight leading-tight">
+              Los pilares que sostienen{" "}
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/95 to-[#34D399]">
+                cada filial.
+              </span>
             </h3>
-            <p className="text-xs sm:text-sm text-starkio-cloud/60 mt-2">
-              Ninguna solución se desarrolla de forma aislada. Todo producto creado por Starkio comparte los mismos principios no negociables.
+            <p className="text-xs sm:text-sm text-starkio-cloud/65 mt-3 max-w-xl mx-auto leading-relaxed">
+              Ninguna solución se desarrolla de forma aislada. Todo producto creado por Starkio comparte los mismos principios no negociables de ingeniería y gobernanza.
             </p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-3 gap-6 relative z-10">
             {holdingPillars.map((pillar, idx) => {
               const PillarIcon = pillar.icon;
               return (
@@ -245,40 +308,75 @@ export default function About() {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
                   transition={{ duration: 0.5, delay: idx * 0.1 }}
-                  whileHover={{ y: -4 }}
-                  className="relative overflow-hidden rounded-2xl border border-white/10 bg-gradient-to-b from-white/[0.04] to-transparent p-6 sm:p-7 shadow-xl hover:border-white/25 transition-all group"
+                  whileHover={{ y: -6 }}
+                  className="relative flex flex-col justify-between overflow-hidden rounded-3xl border border-white/12 bg-gradient-to-b from-white/[0.06] via-white/[0.02] to-black/45 p-7 sm:p-8 shadow-2xl hover:border-white/25 transition-all duration-300 group backdrop-blur-xl"
                 >
-                  <div className="flex items-center justify-between mb-6">
-                    <span
-                      className="text-xs font-bold px-2.5 py-1 rounded-full border tracking-wide uppercase font-sans"
-                      style={{
-                        borderColor: `${pillar.accent}40`,
-                        background: `${pillar.accent}15`,
-                        color: pillar.soft,
-                      }}
-                    >
-                      PILAR / {pillar.number}
-                    </span>
+                  {/* Resplandor de acento superior derecho */}
+                  <div
+                    className="absolute -top-12 -right-12 size-36 rounded-full blur-3xl pointer-events-none opacity-20 group-hover:opacity-45 transition-opacity duration-300"
+                    style={{ background: pillar.accent }}
+                  />
 
-                    <div
-                      className="size-10 rounded-xl bg-black/40 border border-white/15 p-2 flex items-center justify-center shadow-inner group-hover:scale-110 transition-transform"
-                      style={{ color: pillar.soft }}
-                    >
-                      <PillarIcon className="size-5" />
+                  {/* Línea de resalte superior */}
+                  <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
+
+                  <div>
+                    {/* Fila superior: Badge de Pilar & Ícono estilizado */}
+                    <div className="flex items-center justify-between mb-6">
+                      <span
+                        className="text-xs font-bold px-3 py-1 rounded-full border tracking-wide uppercase font-sans flex items-center gap-1.5"
+                        style={{
+                          borderColor: `${pillar.accent}40`,
+                          background: `${pillar.accent}15`,
+                          color: pillar.soft,
+                        }}
+                      >
+                        <span
+                          className="size-1.5 rounded-full"
+                          style={{ background: pillar.accent }}
+                        />
+                        PILAR / {pillar.number}
+                      </span>
+
+                      <div
+                        className="size-11 rounded-2xl bg-black/50 border border-white/15 p-2.5 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                        style={{ color: pillar.soft }}
+                      >
+                        <PillarIcon className="size-5" />
+                      </div>
                     </div>
+
+                    <h4 className="text-xl sm:text-2xl font-extrabold text-white mb-3 tracking-tight group-hover:text-white transition-colors">
+                      {pillar.title}
+                    </h4>
+
+                    <p className="text-xs sm:text-sm text-starkio-cloud/75 leading-relaxed font-normal mb-6">
+                      {pillar.description}
+                    </p>
                   </div>
 
-                  <h4 className="text-lg font-bold text-white mb-3 tracking-tight group-hover:text-white transition-colors">
-                    {pillar.title}
-                  </h4>
+                  {/* Etiquetas / Capacidades de ingeniería */}
+                  <div className="pt-5 border-t border-white/10 flex flex-wrap gap-2">
+                    {pillar.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg text-[11px] font-medium border border-white/10 bg-white/[0.03] text-starkio-cloud/85 group-hover:border-white/15 transition-colors"
+                      >
+                        <CheckCircle2
+                          className="size-3 shrink-0"
+                          style={{ color: pillar.accent }}
+                        />
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
 
-                  <p className="text-xs sm:text-sm text-starkio-cloud/70 leading-relaxed">
-                    {pillar.description}
-                  </p>
-
+                  {/* Barra de acento inferior en hover */}
                   <div
-                    className="absolute bottom-0 left-0 right-0 h-1 transition-all duration-300 opacity-0 group-hover:opacity-100"
-                    style={{ background: pillar.accent }}
+                    className="absolute bottom-0 inset-x-0 h-[2px] opacity-30 group-hover:opacity-100 transition-opacity duration-300"
+                    style={{
+                      background: `linear-gradient(90deg, transparent, ${pillar.accent}, transparent)`,
+                    }}
                   />
                 </motion.div>
               );
