@@ -116,7 +116,18 @@ export default function Areas() {
                 style={isSelected ? { boxShadow: `inset 0 -3px 0 ${area.accent}` } : undefined}
               >
                 <span className="absolute -right-9 -top-10 size-32 rounded-full opacity-25" style={{ background: area.accent }} />
-                <div className="flex items-center justify-between">
+
+                {/* Marca de agua SVG ampliada y transparente en la tarjeta selectora */}
+                <div
+                  className={`pointer-events-none absolute -right-6 -bottom-6 size-36 sm:size-40 select-none transition-all duration-300 ${
+                    isSelected ? "opacity-[0.20] scale-100" : "opacity-[0.05] scale-90"
+                  }`}
+                  aria-hidden="true"
+                >
+                  {CardSvg ? <CardSvg hideFrame className="size-full" /> : null}
+                </div>
+
+                <div className="relative z-10 flex items-center justify-between">
                   <span className="relative inline-flex rounded-full px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-mono" style={{ background: `${area.accent}22`, color: area.accent }}>
                     {area.label}
                   </span>
@@ -124,8 +135,8 @@ export default function Areas() {
                     {CardSvg ? <CardSvg className="size-full" /> : null}
                   </div>
                 </div>
-                <h3 className="relative mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-white">{area.cardTitle}</h3>
-                <p className="relative mt-2 text-xs sm:text-sm leading-relaxed" style={{ color: area.soft }}>{area.cardDescription}</p>
+                <h3 className="relative z-10 mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-white">{area.cardTitle}</h3>
+                <p className="relative z-10 mt-2 text-xs sm:text-sm leading-relaxed" style={{ color: area.soft }}>{area.cardDescription}</p>
               </motion.button>
             );
           })}
@@ -143,19 +154,34 @@ export default function Areas() {
             transition={{ duration: 0.3 }}
             className={`relative isolate overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br ${activeArea.background} px-6 py-8 sm:px-10 sm:py-12 shadow-2xl`}
           >
+            {/* Resplandor ambiental de acento */}
             <div className="absolute right-[-4rem] top-[-5rem] size-64 rounded-full opacity-25 blur-3xl pointer-events-none" style={{ background: activeArea.accent }} />
-            <div className="relative grid gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
+
+            {/* Gran SVG de fondo / Marca de agua de alta definición transparente para el área seleccionada */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.86, rotate: -2 }}
+              animate={{ opacity: 0.16, scale: 1, rotate: 0 }}
+              exit={{ opacity: 0, scale: 0.94 }}
+              transition={{ duration: 0.45, ease: "easeOut" }}
+              className="pointer-events-none absolute -right-12 -bottom-10 sm:-right-4 md:right-6 lg:right-14 top-1/2 -translate-y-1/2 size-72 sm:size-96 md:size-[420px] lg:size-[480px] xl:size-[520px] select-none z-0"
+              aria-hidden="true"
+            >
+              {ActiveSvg ? <ActiveSvg hideFrame className="size-full filter drop-shadow-2xl" /> : null}
+            </motion.div>
+
+            {/* Contenido en primer plano con z-10 para máxima legibilidad */}
+            <div className="relative z-10 grid gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
               <div>
                 <div className="mb-6 sm:mb-8 flex items-center justify-between">
                   <span className="text-xs font-mono tracking-widest font-semibold uppercase" style={{ color: activeArea.soft }}>{activeArea.eyebrow}</span>
-                  <div className="size-14 rounded-2xl bg-black/40 border border-white/20 p-2.5 shadow-2xl backdrop-blur-md flex items-center justify-center">
+                  <div className="size-14 sm:size-16 rounded-2xl bg-black/40 border border-white/20 p-2.5 sm:p-3 shadow-2xl backdrop-blur-md flex items-center justify-center">
                     {ActiveSvg ? <ActiveSvg className="size-full" /> : null}
                   </div>
                 </div>
-                <h3 className="max-w-2xl text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-starkio-cloud">
+                <h3 className="max-w-2xl text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-white drop-shadow-sm">
                   {activeArea.title}
                 </h3>
-                <p className="mt-4 sm:mt-5 max-w-xl text-sm sm:text-base leading-relaxed text-starkio-cloud/75 font-normal">
+                <p className="mt-4 sm:mt-5 max-w-xl text-sm sm:text-base leading-relaxed text-starkio-cloud/85 font-normal">
                   {activeArea.description}
                 </p>
                 <a
@@ -167,11 +193,11 @@ export default function Areas() {
                 </a>
               </div>
 
-              <div className="border-t border-white/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                <p className="text-xs font-mono tracking-widest text-starkio-cloud/45 uppercase">CAPACIDADES</p>
+              <div className="border-t border-white/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 backdrop-blur-[2px] rounded-2xl">
+                <p className="text-xs font-mono tracking-widest text-starkio-cloud/55 uppercase">CAPACIDADES</p>
                 <ul className="mt-4 space-y-3">
                   {activeArea.services.map((service, index) => (
-                    <li key={service} className="flex items-center gap-3 text-xs sm:text-sm text-starkio-cloud/85">
+                    <li key={service} className="flex items-center gap-3 text-xs sm:text-sm text-starkio-cloud/90 font-medium">
                       <span className="font-mono text-xs font-bold" style={{ color: activeArea.accent }}>0{index + 1}</span>
                       {service}
                     </li>

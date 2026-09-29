@@ -6,12 +6,13 @@ import React from "react";
 interface IconProps extends React.SVGProps<SVGSVGElement> {
   className?: string;
   size?: number | string;
+  hideFrame?: boolean;
 }
 
 /**
  * Ícono vectorial de alta definición para el Área DATA (Analytics, Pipelines, Inteligencia)
  */
-export function DataAreaSvg({ className = "size-8", size, ...props }: IconProps) {
+export function DataAreaSvg({ className = "size-8", size, hideFrame = false, ...props }: IconProps) {
   return (
     <svg
       width={size || "100%"}
@@ -34,7 +35,9 @@ export function DataAreaSvg({ className = "size-8", size, ...props }: IconProps)
         </linearGradient>
       </defs>
 
-      <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#dataGradCompGlow)" stroke="#3B82F6" strokeWidth="1.2" strokeOpacity="0.3" />
+      {!hideFrame && (
+        <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#dataGradCompGlow)" stroke="#3B82F6" strokeWidth="1.2" strokeOpacity="0.3" />
+      )}
 
       {/* Cilindros de datos / Storage */}
       <path d="M14 20 C14 17 22 15 32 15 C42 15 50 17 50 20 C50 23 42 25 32 25 C22 25 14 23 14 20 Z" fill="url(#dataGradComp1)" />
@@ -55,7 +58,7 @@ export function DataAreaSvg({ className = "size-8", size, ...props }: IconProps)
 /**
  * Ícono vectorial de alta definición para el Área SOFTWARE (Engineering, Plataformas, Arquitectura)
  */
-export function SoftwareAreaSvg({ className = "size-8", size, ...props }: IconProps) {
+export function SoftwareAreaSvg({ className = "size-8", size, hideFrame = false, ...props }: IconProps) {
   return (
     <svg
       width={size || "100%"}
@@ -78,7 +81,9 @@ export function SoftwareAreaSvg({ className = "size-8", size, ...props }: IconPr
         </linearGradient>
       </defs>
 
-      <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#softGradCompGlow)" stroke="#10B981" strokeWidth="1.2" strokeOpacity="0.3" />
+      {!hideFrame && (
+        <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#softGradCompGlow)" stroke="#10B981" strokeWidth="1.2" strokeOpacity="0.3" />
+      )}
 
       {/* Bloque Isométrico Central */}
       <g transform="translate(32, 28)">
@@ -104,7 +109,7 @@ export function SoftwareAreaSvg({ className = "size-8", size, ...props }: IconPr
 /**
  * Ícono vectorial de alta definición para el Área AI (Inteligencia, Modelos, Visión & NLP)
  */
-export function AiAreaSvg({ className = "size-8", size, ...props }: IconProps) {
+export function AiAreaSvg({ className = "size-8", size, hideFrame = false, ...props }: IconProps) {
   return (
     <svg
       width={size || "100%"}
@@ -127,7 +132,9 @@ export function AiAreaSvg({ className = "size-8", size, ...props }: IconProps) {
         </linearGradient>
       </defs>
 
-      <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#aiGradCompGlow)" stroke="#A855F7" strokeWidth="1.2" strokeOpacity="0.3" />
+      {!hideFrame && (
+        <rect x="4" y="4" width="56" height="56" rx="16" fill="url(#aiGradCompGlow)" stroke="#A855F7" strokeWidth="1.2" strokeOpacity="0.3" />
+      )}
 
       {/* Conexiones Sinápticas */}
       <g stroke="#C084FC" strokeWidth="1.5" opacity="0.65">
