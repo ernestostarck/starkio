@@ -9,7 +9,14 @@ type Errors = Partial<Record<"name" | "email" | "message", string>>;
 
 export default function Contact() {
   const router = useRouter();
-  const [form, setForm] = useState({ name: "", email: "", message: "", website: "" });
+  const [form, setForm] = useState({
+    name: "",
+    email: "",
+    company: "",
+    service_area: "software",
+    message: "",
+    website: "",
+  });
   const [errors, setErrors] = useState<Errors>({});
   const [status, setStatus] = useState<"idle" | "loading" | "error">("idle");
   const [serverError, setServerError] = useState("");
@@ -123,6 +130,39 @@ export default function Contact() {
                   {errors.email}
                 </p>
               )}
+            </div>
+          </div>
+
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label htmlFor="contact-company" className="block text-xs text-starkio-cloud/40 mb-2">
+                Empresa u Organización (opcional)
+              </label>
+              <input
+                id="contact-company"
+                type="text"
+                value={form.company}
+                onChange={(e) => setForm({ ...form, company: e.target.value })}
+                placeholder="Nombre de tu empresa"
+                className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-starkio-cloud placeholder:text-white/20 focus:outline-none focus:border-starkio-purple/50 transition-colors"
+              />
+            </div>
+            <div>
+              <label htmlFor="contact-area" className="block text-xs text-starkio-cloud/40 mb-2">
+                Área de Interés
+              </label>
+              <select
+                id="contact-area"
+                value={form.service_area}
+                onChange={(e) => setForm({ ...form, service_area: e.target.value })}
+                className="w-full bg-[#131322] border border-white/10 rounded-lg px-4 py-3 text-sm text-starkio-cloud focus:outline-none focus:border-starkio-purple/50 transition-colors"
+              >
+                <option value="software">Desarrollo de Software & Web</option>
+                <option value="ai">Soluciones de IA & Modelos LLM</option>
+                <option value="data">Ingeniería de Datos & Pipelines</option>
+                <option value="cloud">Arquitectura Cloud & DevOps</option>
+                <option value="finanzas">Gestión Financiera & KPIs</option>
+              </select>
             </div>
           </div>
 

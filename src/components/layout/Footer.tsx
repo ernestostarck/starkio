@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { BrainCircuit, Building2, Code2, FileText, Mail, Scale } from "lucide-react";
+import { BrainCircuit, Building2, Code2, Droplets, FileText, Mail, Scale } from "lucide-react";
 
 const columns = [
   {
@@ -15,7 +15,7 @@ const columns = [
     title: "Compañías",
     links: [
       { label: "Starck Brand Hub", href: "#ventures", icon: Building2 },
-      { label: "Aqualis", href: "#ventures", icon: Building2 },
+      { label: "Aqualis (División APR)", href: "#ventures", icon: Droplets },
     ],
   },
   {

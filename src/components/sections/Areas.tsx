@@ -31,8 +31,8 @@ const areas = [
     eyebrow: "02 / SOFTWARE ENGINEERING",
     title: "Productos digitales construidos para escalar.",
     description:
-      "Diseñamos y desarrollamos aplicaciones, APIs y plataformas que soportan el crecimiento del negocio desde su primera versión.",
-    services: ["Productos digitales", "APIs e integraciones", "Plataformas escalables"],
+      "Diseñamos y desarrollamos aplicaciones, APIs y plataformas que soportan el crecimiento del negocio desde su primera versión. Hogar de filiales como Aqualis (gestión hídrica y telemetría) y Starck Brand Hub.",
+    services: ["Productos digitales (Aqualis)", "APIs e integraciones (Starkio Cloud)", "Plataformas escalables (Starkio Manager)"],
     accent: "#34D399",
     soft: "#A7F3D0",
     background: "from-[#0A1F1A] via-[#10382c] to-[#059669]/40",

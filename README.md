@@ -1,15 +1,29 @@
-# Starkio Labs — Web
+# Starkio Labs — Portal Corporativo & Holding Tecnológico
 
-Sitio web oficial del holding. Landing page + formulario de contacto + páginas legales.
+Sitio web oficial y portal institucional de **Starkio Labs SpA** ([starkio.io](https://starkio.io)). Presenta la visión del holding, las tres áreas de especialización tecnológica (**Data**, **Software Engineering**, **AI Solutions**), las filiales y divisiones del ecosistema (**Aqualis**, **Starck Brand Hub**), canal de contacto institucional y páginas de cumplimiento normativo y legal.
 
-**Stack:** Next.js 14 (App Router) · TypeScript · Tailwind CSS · Framer Motion / Motion · Resend · lucide-react
+---
 
-## Requisitos
+## Stack Tecnológico
 
-- Node.js 18.18 o superior
-- npm
+- **Framework:** Next.js 14 (App Router, Server & Client Components)
+- **Lenguaje:** TypeScript 5
+- **Estilos:** Tailwind CSS con paleta y tokens corporativos de Starkio
+- **Animaciones:** Framer Motion / Motion
+- **Iconografía:** Lucide React
+- **Email & Notificaciones:** Resend
+- **Calidad de Código:** ESLint & TypeScript strict type checking
 
-## Inicio rápido
+---
+
+## Requisitos Previos
+
+- [Node.js](https://nodejs.org/) (versión 18.18 o superior recomendada)
+- [npm](https://www.npmjs.com/) (v9 o superior)
+
+---
+
+## Inicio Rápido en Desarrollo
 
 ```bash
 # 1. Instalar dependencias
@@ -17,86 +31,77 @@ npm install
 
 # 2. Configurar variables de entorno
 cp .env.example .env.local
-# → Edita .env.local con tus valores (ver tabla abajo)
 
-# 3. Correr en desarrollo
+# 3. Iniciar el servidor de desarrollo
 npm run dev
 ```
 
-Abre [http://localhost:3000](http://localhost:3000).
+El sitio estará disponible en [http://localhost:3000](http://localhost:3000).
 
-## Variables de entorno
+---
 
-| Variable | Requerida | Descripción |
-|---|---|---|
-| `RESEND_API_KEY` | No | API key de [Resend](https://resend.com) para enviar el formulario de contacto. Sin ella, `/api/contact` responde `503` en vez de fallar. |
-| `CONTACT_TO_EMAIL` | No | Dirección que recibe los mensajes del formulario. Por defecto `hola@starkio.io`. |
-| `NEXT_PUBLIC_SITE_URL` | No | URL pública del sitio, usada en `metadataBase`, `sitemap.xml` y `robots.txt`. Por defecto `https://starkio.io`. |
-
-> Si defines una de estas variables en Vercel, asegúrate de que tenga un valor real y no quede vacía — un string vacío no activa el valor por defecto y puede romper el build (`new URL('')`).
-
-## Scripts disponibles
+## Scripts Disponibles
 
 | Comando | Descripción |
-|---|---|
-| `npm run dev` | Servidor de desarrollo en `localhost:3000` |
-| `npm run build` | Build de producción |
-| `npm run start` | Sirve el build de producción |
-| `npm run lint` | Linter (ESLint) |
+| :--- | :--- |
+| `npm run dev` | Inicia el servidor de desarrollo con Hot Reload en `localhost:3000` |
+| `npm run build` | Compila y optimiza la aplicación para producción |
+| `npm run start` | Inicia el servidor de producción con los assets compilados |
+| `npm run lint` | Ejecuta el análisis estático de código con ESLint |
 
-## Estructura
+---
+
+## Variables de Entorno
+
+Copiar `.env.example` a `.env.local` y definir los valores correspondientes para el entorno:
+
+| Variable | Requerida | Valor por Defecto | Descripción |
+| :--- | :---: | :--- | :--- |
+| `NEXT_PUBLIC_SITE_URL` | No | `https://starkio.io` | URL canónica para metadata, OpenGraph, sitemap y robots. |
+| `CONTACT_TO_EMAIL` | No | `hola@starkio.io` | Dirección de correo institucional donde se reciben los mensajes. |
+| `RESEND_API_KEY` | No | — | Clave de API de Resend para el despacho de correos electrónicos. |
+| `STARKIO_CLOUD_API_URL`| No | `http://localhost:8000` | Endpoint de la API central para registro de contactos. |
+
+---
+
+## Estructura del Proyecto
 
 ```
-src/
-├── app/
-│   ├── layout.tsx              # Metadata global, fuentes, CookieBanner
-│   ├── page.tsx                # Homepage
-│   ├── not-found.tsx           # Página 404
-│   ├── icon.svg                # Favicon
-│   ├── opengraph-image.tsx     # Imagen OG generada dinámicamente
-│   ├── robots.ts                # robots.txt
-│   ├── sitemap.ts               # sitemap.xml
-│   ├── api/contact/route.ts     # API del formulario de contacto (Resend)
-│   ├── gracias/page.tsx         # Confirmación tras enviar el formulario
-│   ├── privacidad/              # Política de privacidad
-│   └── terminos/                # Términos y condiciones
-├── components/
-│   ├── CookieBanner.tsx
-│   ├── layout/
-│   │   ├── Navbar.tsx
-│   │   └── Footer.tsx
-│   └── sections/
-│       ├── Hero.tsx
-│       ├── Areas.tsx           # Data · Software · AI
-│       ├── Ventures.tsx        # Starck Brand Hub, Aqualis
-│       ├── About.tsx
-│       └── Contact.tsx
-└── styles/
-    └── globals.css
+starkio-labs/
+├── public/
+│   └── logo/                   # Isotipos y logotipos SVG corporativos
+├── src/
+│   ├── app/
+│   │   ├── api/
+│   │   │   ├── contact/        # Endpoint de procesamiento de contacto
+│   │   │   └── health/         # Endpoint de verificación de estado y disponibilidad
+│   │   ├── gracias/            # Página de confirmación de envío
+│   │   ├── privacidad/         # Política de Privacidad (cumplimiento Ley N° 19.628 / 21.719)
+│   │   ├── terminos/           # Términos y Condiciones de Uso
+│   │   ├── layout.tsx          # Layout raíz, tipografía y metadatos SEO
+│   │   ├── page.tsx            # Página principal institucional
+│   │   ├── robots.ts           # Configuración dinámica de robots.txt
+│   │   └── sitemap.ts          # Generador de sitemap.xml
+│   ├── components/
+│   │   ├── layout/             # Navbar y Footer corporativo
+│   │   ├── sections/           # Hero, Areas, Ventures, About, Contact
+│   │   └── CookieBanner.tsx    # Banner de consentimiento
+│   ├── middleware.ts           # Middleware para seguridad y control de peticiones
+│   └── styles/
+│       └── globals.css         # Directivas Tailwind y estilos base
+├── .env.example                # Plantilla de variables de entorno
+├── next.config.mjs             # Configuración de Next.js y cabeceras de respuesta
+├── package.json                # Dependencias y scripts del proyecto
+├── tailwind.config.ts          # Configuración del sistema de diseño y paleta
+└── tsconfig.json               # Configuración estricta de TypeScript
 ```
 
-## Formulario de contacto
+---
 
-`POST /api/contact` valida los campos, aplica un rate limit best-effort en memoria (5 solicitudes/minuto por IP) y envía el mensaje vía Resend. Si `RESEND_API_KEY` no está configurada, responde `503` sin exponer detalles internos del proveedor.
+## Despliegue en Producción
 
-## Tokens de color
+El proyecto está optimizado para su despliegue continuo en plataformas cloud (como Vercel) o en cualquier servidor Node.js.
 
-| Token | Hex | Uso |
-|---|---|---|
-| `starkio-purple` | `#6C63FF` | Color principal |
-| `data` | `#2563EB` | Área Data |
-| `software` | `#059669` | Área Software |
-| `ai` | `#7C3AED` | Área AI |
-
-## Deploy
-
-El sitio está conectado a Vercel vía integración de GitHub: cada push a `main` en [ernestostarck/starkio](https://github.com/ernestostarck/starkio) dispara un deploy automático. `starkio-labs/` es la raíz del repositorio.
-
-Para deployar manualmente con la CLI:
-
-```bash
-npm i -g vercel
-vercel
-```
-
-Configura las variables de entorno necesarias (ver tabla arriba) en **Project Settings → Environment Variables** del dashboard de Vercel.
+1. **Configurar variables:** Añadir las variables listadas en la sección de [Variables de Entorno](#variables-de-entorno) en el panel de configuración de la plataforma de hosting.
+2. **Build:** Ejecutar `npm run build` para generar los bundles optimizados.
+3. **Ejecución:** El comando de arranque estándar es `npm run start`.
