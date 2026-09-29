@@ -15,6 +15,11 @@ import {
   Database,
   Code2,
 } from "lucide-react";
+import {
+  EngineeringPillarSvg,
+  ArchitecturePillarSvg,
+  RealEconomyPillarSvg,
+} from "@/components/icons/PillarIcons";
 
 const holdingPillars = [
   {
@@ -23,6 +28,7 @@ const holdingPillars = [
     description:
       "Construimos activos tecnológicos propietarios con código auditable, arquitectura limpia y cero dependencias frágiles. Cada línea es un activo de largo plazo.",
     icon: Code2,
+    SvgIcon: EngineeringPillarSvg,
     accent: "#60A5FA",
     soft: "#BFDBFE",
     borderGlow: "from-[#2563EB]/20 to-transparent",
@@ -34,6 +40,7 @@ const holdingPillars = [
     description:
       "Todas nuestras filiales (Aqualis, Blazon) operan con el mismo rigor de ingeniería: desarrollo de software propietario, alta disponibilidad y control técnico integral.",
     icon: Layers,
+    SvgIcon: ArchitecturePillarSvg,
     accent: "#34D399",
     soft: "#A7F3D0",
     borderGlow: "from-[#059669]/20 to-transparent",
@@ -45,6 +52,7 @@ const holdingPillars = [
     description:
       "Desarrollamos soluciones verticales que resuelven ineficiencias críticas: desde el suministro hídrico comunitario hasta la consistencia y diseño de marcas globales.",
     icon: Cpu,
+    SvgIcon: RealEconomyPillarSvg,
     accent: "#C084FC",
     soft: "#EDE9FE",
     borderGlow: "from-[#7C3AED]/20 to-transparent",
@@ -301,6 +309,7 @@ export default function About() {
           <div className="grid md:grid-cols-3 gap-6 relative z-10">
             {holdingPillars.map((pillar, idx) => {
               const PillarIcon = pillar.icon;
+              const PillarSvg = pillar.SvgIcon;
               return (
                 <motion.div
                   key={pillar.title}
@@ -317,10 +326,18 @@ export default function About() {
                     style={{ background: pillar.accent }}
                   />
 
+                  {/* Marca de agua SVG ampliada y transparente de fondo para que el texto sea perfectamente legible */}
+                  <div
+                    className="pointer-events-none absolute -right-6 -bottom-6 size-44 sm:size-52 select-none opacity-[0.16] group-hover:opacity-[0.26] transition-all duration-500 mix-blend-screen scale-100 group-hover:scale-105"
+                    aria-hidden="true"
+                  >
+                    {PillarSvg ? <PillarSvg hideFrame className="size-full" /> : null}
+                  </div>
+
                   {/* Línea de resalte superior */}
                   <div className="absolute top-0 inset-x-0 h-px bg-gradient-to-r from-transparent via-white/20 to-transparent" />
 
-                  <div>
+                  <div className="relative z-10">
                     {/* Fila superior: Badge de Pilar & Ícono estilizado */}
                     <div className="flex items-center justify-between mb-6">
                       <span
@@ -339,10 +356,14 @@ export default function About() {
                       </span>
 
                       <div
-                        className="size-11 rounded-2xl bg-black/50 border border-white/15 p-2.5 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                        className="size-11 rounded-2xl bg-black/50 border border-white/15 p-2 flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                         style={{ color: pillar.soft }}
                       >
-                        <PillarIcon className="size-5" />
+                        {PillarSvg ? (
+                          <PillarSvg className="size-full" />
+                        ) : (
+                          <PillarIcon className="size-5" />
+                        )}
                       </div>
                     </div>
 
@@ -356,7 +377,7 @@ export default function About() {
                   </div>
 
                   {/* Etiquetas / Capacidades de ingeniería */}
-                  <div className="pt-5 border-t border-white/10 flex flex-wrap gap-2">
+                  <div className="relative z-10 pt-5 border-t border-white/10 flex flex-wrap gap-2">
                     {pillar.tags.map((tag) => (
                       <span
                         key={tag}
