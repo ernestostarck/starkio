@@ -105,7 +105,7 @@ export default function Areas() {
                     {area.label}
                   </span>
                   <div className="relative size-11 rounded-xl bg-black/40 border border-white/10 p-2 shadow-inner flex items-center justify-center">
-                    <CardSvg className="size-full" />
+                    {CardSvg ? <CardSvg className="size-full" /> : null}
                   </div>
                 </div>
                 <h3 className="relative mt-4 text-3xl font-bold tracking-tight text-starkio-cloud">{area.cardTitle}</h3>
@@ -132,7 +132,7 @@ export default function Areas() {
                 <div className="mb-8 flex items-center justify-between">
                   <span className="text-xs font-medium tracking-widest" style={{ color: activeArea.soft }}>{activeArea.eyebrow}</span>
                   <div className="size-14 rounded-2xl bg-black/40 border border-white/20 p-2.5 shadow-2xl backdrop-blur-md flex items-center justify-center">
-                    <ActiveSvg className="size-full" />
+                    {ActiveSvg ? <ActiveSvg className="size-full" /> : null}
                   </div>
                 </div>
                 <h3 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-starkio-cloud sm:text-5xl">

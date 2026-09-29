@@ -416,7 +416,7 @@ export default function Ventures() {
                               >
                                 <div className="flex items-center gap-2 mb-1">
                                   <div style={{ color: active.soft }}>
-                                    <IntegSvg className="size-4" />
+                                    {IntegSvg ? <IntegSvg className="size-4" /> : null}
                                   </div>
                                   <span className="text-xs font-bold text-white truncate">
                                     {item.name}
