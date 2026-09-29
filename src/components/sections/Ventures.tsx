@@ -8,14 +8,17 @@ import {
   ArrowRight,
   ArrowUpRight,
   Boxes,
-  Cloud,
-  Server,
-  Droplets,
-  ShieldCheck,
   Activity,
   CheckCircle2,
-  Sparkles,
 } from "lucide-react";
+import {
+  CloudTelemetrySvg,
+  ManagerFleetSvg,
+  ShieldComplianceSvg,
+  OfficeAddinSvg,
+  CloudAuthRbacSvg,
+  DesignTokensSvg,
+} from "@/components/icons/IntegrationIcons";
 
 interface VentureItem {
   id: string;
@@ -32,12 +35,13 @@ interface VentureItem {
   background: string;
   Icon?: typeof Boxes;
   logoSrc?: string;
+  connectionSvg?: string;
   label: string;
   url?: string;
   integrations?: {
     name: string;
     description: string;
-    icon: typeof Cloud;
+    SvgIcon: React.ComponentType<{ className?: string }>;
   }[];
   highlights?: string[];
 }
@@ -59,23 +63,24 @@ const ventures: VentureItem[] = [
     soft: "#A7F3D0",
     background: "from-[#08251F] via-[#0C3B31] to-[#059669]/40",
     logoSrc: "/logo/aqualis-icon.svg",
+    connectionSvg: "/icons/integrations/aqualis-connection.svg",
     label: "Tecnología para una infraestructura esencial que no puede detenerse.",
     url: "http://localhost:3001",
     integrations: [
       {
         name: "Starkio Cloud",
         description: "Telemetría pasiva HTTPS y bus de eventos central",
-        icon: Cloud,
+        SvgIcon: CloudTelemetrySvg,
       },
       {
         name: "Starkio Manager",
         description: "Monitoreo de flota, alertas técnicas y diagnóstico",
-        icon: Server,
+        SvgIcon: ManagerFleetSvg,
       },
       {
         name: "Ley 21.719 & SSR 20.998",
         description: "Protección de datos personales y reportes DOH",
-        icon: ShieldCheck,
+        SvgIcon: ShieldComplianceSvg,
       },
     ],
     highlights: [
@@ -86,45 +91,46 @@ const ventures: VentureItem[] = [
     ],
   },
   {
-    id: "starck-brand-hub",
-    name: "Starck Brand Hub",
+    id: "blazon",
+    name: "Blazon",
     number: "02",
-    tag: "Software · Design & Productivity",
-    division: "División Corporativa",
+    tag: "Software · Design & Presentation Engineering",
+    division: "División Oficial Starkio Labs",
     shortDescription:
-      "Plataforma de consistencia de marca y add-in corporativo para presentaciones de alto impacto.",
+      "Plataforma de consistencia de marca y Add-in corporativo para presentaciones de alto impacto.",
     description:
-      "Plataforma de branding para presentaciones corporativas. Un add-in inteligente para PowerPoint que convierte la identidad visual en un sistema vivo y consistente, garantizando que cada propuesta comercial y reporte ejecutivo mantenga la excelencia de marca del holding.",
-    status: "Activo",
-    statusType: "active",
-    accent: "#A78BFA",
+      "Plataforma de brand consistency y suite de diseño corporativo. Un add-in inteligente para Microsoft PowerPoint que transforma la identidad visual en un sistema automatizado y vivo, garantizando que cada propuesta comercial y reporte ejecutivo mantenga la excelencia de marca y tokens del holding.",
+    status: "En Producción",
+    statusType: "live",
+    accent: "#6C63FF",
     soft: "#EDE9FE",
-    background: "from-[#17102B] via-[#251A48] to-[#6C63FF]/40",
-    Icon: Boxes,
+    background: "from-[#17102B] via-[#20153D] to-[#2563EB]/35",
+    logoSrc: "/logo/blazon-icon.svg",
+    connectionSvg: "/icons/integrations/blazon-connection.svg",
     label: "Estandariza la forma en que las marcas se presentan al mundo.",
     url: "#contact",
     integrations: [
       {
-        name: "Microsoft 365",
+        name: "Microsoft 365 Ribbon",
         description: "Add-in nativo para PowerPoint & Office Suite",
-        icon: Boxes,
+        SvgIcon: OfficeAddinSvg,
       },
       {
         name: "Starkio Cloud Auth",
         description: "Autenticación corporativa multi-tenant con RBAC",
-        icon: Cloud,
+        SvgIcon: CloudAuthRbacSvg,
       },
       {
         name: "Design System Central",
         description: "Paletas dinámicas, tipografías y plantillas auditadas",
-        icon: Sparkles,
+        SvgIcon: DesignTokensSvg,
       },
     ],
     highlights: [
       "Generación instantánea de diapositivas con identidad corporativa",
       "Biblioteca de componentes y activos visuales aprobados",
       "Sincronización en la nube para equipos comerciales y directivos",
-      "Integrado a la infraestructura de Starkio Labs",
+      "Integrado a la infraestructura central de Starkio Labs",
     ],
   },
 ];
@@ -376,20 +382,42 @@ export default function Ventures() {
                     {/* Conexión con Starkio Cloud y Starkio Manager */}
                     {active.integrations && active.integrations.length > 0 && (
                       <div className="mt-8 pt-6 border-t border-white/10">
-                        <p className="text-xs font-mono uppercase tracking-widest text-starkio-cloud/50 mb-3 flex items-center gap-2">
-                          <Activity className="size-3.5 text-[#34D399]" />
-                          Conexión con la Plataforma Central Starkio
-                        </p>
+                        <div className="flex items-center justify-between mb-3">
+                          <p className="text-xs font-mono uppercase tracking-widest text-starkio-cloud/50 flex items-center gap-2">
+                            <Activity className="size-3.5 text-[#34D399]" />
+                            Conexión con la Plataforma Central Starkio
+                          </p>
+                          <span className="text-[10px] font-mono text-starkio-cloud/40 uppercase">
+                            MALLA DE INTEGRACIÓN ACTIVA
+                          </span>
+                        </div>
+
+                        {/* Diagrama SVG de arquitectura de integración entre la Filial y la Plataforma Central */}
+                        {active.connectionSvg && (
+                          <div className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-black/35 p-1.5 shadow-xl">
+                            <Image
+                              src={active.connectionSvg}
+                              alt={`Diagrama de integración de ${active.name} con Plataforma Central Starkio`}
+                              width={680}
+                              height={90}
+                              className="w-full h-auto object-contain"
+                              priority
+                            />
+                          </div>
+                        )}
+
                         <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
                           {active.integrations.map((item) => {
-                            const IntegIcon = item.icon;
+                            const IntegSvg = item.SvgIcon;
                             return (
                               <div
                                 key={item.name}
                                 className="rounded-xl border border-white/10 bg-black/25 p-3 backdrop-blur-sm"
                               >
                                 <div className="flex items-center gap-2 mb-1">
-                                  <IntegIcon className="size-3.5" style={{ color: active.soft }} />
+                                  <div style={{ color: active.soft }}>
+                                    <IntegSvg className="size-4" />
+                                  </div>
                                   <span className="text-xs font-bold text-white truncate">
                                     {item.name}
                                   </span>

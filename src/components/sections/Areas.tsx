@@ -2,7 +2,8 @@
 
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
-import { ArrowDownRight, BarChart3, BrainCircuit, Code2, Database, Workflow } from "lucide-react";
+import { ArrowDownRight, Database, Workflow } from "lucide-react";
+import { DataAreaSvg, SoftwareAreaSvg, AiAreaSvg } from "@/components/icons/AreaIcons";
 
 const areas = [
   {
@@ -19,7 +20,7 @@ const areas = [
     accent: "#60A5FA",
     soft: "#BFDBFE",
     background: "from-[#0D1A2E] via-[#102746] to-[#2563EB]/40",
-    icon: BarChart3,
+    SvgIcon: DataAreaSvg,
     metric: "Datos claros. Decisiones seguras.",
   },
   {
@@ -31,12 +32,12 @@ const areas = [
     eyebrow: "02 / SOFTWARE ENGINEERING",
     title: "Productos digitales construidos para escalar.",
     description:
-      "Diseñamos y desarrollamos aplicaciones, APIs y plataformas que soportan el crecimiento del negocio desde su primera versión. Hogar de filiales como Aqualis (gestión hídrica y telemetría) y Starck Brand Hub.",
+      "Diseñamos y desarrollamos aplicaciones, APIs y plataformas que soportan el crecimiento del negocio desde su primera versión. Hogar de filiales como Aqualis (gestión hídrica y telemetría) y Blazon (consistencia de marca y diseño corporativo).",
     services: ["Productos digitales (Aqualis)", "APIs e integraciones (Starkio Cloud)", "Plataformas escalables (Starkio Manager)"],
     accent: "#34D399",
     soft: "#A7F3D0",
     background: "from-[#0A1F1A] via-[#10382c] to-[#059669]/40",
-    icon: Code2,
+    SvgIcon: SoftwareAreaSvg,
     metric: "Arquitectura para lo que sigue.",
   },
   {
@@ -53,7 +54,7 @@ const areas = [
     accent: "#C084FC",
     soft: "#EDE9FE",
     background: "from-[#16091F] via-[#31144d] to-[#7C3AED]/40",
-    icon: BrainCircuit,
+    SvgIcon: AiAreaSvg,
     metric: "Más capacidad donde importa.",
   },
 ] as const;
@@ -63,7 +64,7 @@ type AreaId = (typeof areas)[number]["id"];
 export default function Areas() {
   const [selected, setSelected] = useState<AreaId>("data");
   const activeArea = areas.find((area) => area.id === selected) ?? areas[0];
-  const Icon = activeArea.icon;
+  const ActiveSvg = activeArea.SvgIcon;
 
   return (
     <section id="areas" className="border-t border-white/5 px-6 py-28 sm:py-32">
@@ -82,6 +83,7 @@ export default function Areas() {
         <div className="mb-5 grid gap-4 md:grid-cols-3" role="tablist" aria-label="Áreas de servicio">
           {areas.map((area) => {
             const isSelected = area.id === selected;
+            const CardSvg = area.SvgIcon;
             return (
               <motion.button
                 key={area.id}
@@ -98,9 +100,14 @@ export default function Areas() {
                 style={isSelected ? { boxShadow: `inset 0 -3px 0 ${area.accent}` } : undefined}
               >
                 <span className="absolute -right-9 -top-10 size-32 rounded-full opacity-25" style={{ background: area.accent }} />
-                <span className="relative inline-flex rounded-full px-3 py-1 text-[10px] font-semibold tracking-widest" style={{ background: `${area.accent}22`, color: area.accent }}>
-                  {area.label}
-                </span>
+                <div className="flex items-center justify-between">
+                  <span className="relative inline-flex rounded-full px-3 py-1 text-[10px] font-semibold tracking-widest" style={{ background: `${area.accent}22`, color: area.accent }}>
+                    {area.label}
+                  </span>
+                  <div className="relative size-11 rounded-xl bg-black/40 border border-white/10 p-2 shadow-inner flex items-center justify-center">
+                    <CardSvg className="size-full" />
+                  </div>
+                </div>
                 <h3 className="relative mt-4 text-3xl font-bold tracking-tight text-starkio-cloud">{area.cardTitle}</h3>
                 <p className="relative mt-2 max-w-[250px] text-sm leading-relaxed" style={{ color: area.soft }}>{area.cardDescription}</p>
               </motion.button>
@@ -124,7 +131,9 @@ export default function Areas() {
               <div>
                 <div className="mb-8 flex items-center justify-between">
                   <span className="text-xs font-medium tracking-widest" style={{ color: activeArea.soft }}>{activeArea.eyebrow}</span>
-                  <Icon className="size-8" style={{ color: activeArea.accent }} aria-hidden="true" />
+                  <div className="size-14 rounded-2xl bg-black/40 border border-white/20 p-2.5 shadow-2xl backdrop-blur-md flex items-center justify-center">
+                    <ActiveSvg className="size-full" />
+                  </div>
                 </div>
                 <h3 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-starkio-cloud sm:text-5xl">
                   {activeArea.title}

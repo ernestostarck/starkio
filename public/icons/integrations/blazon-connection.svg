@@ -1,0 +1,67 @@
+<svg width="100%" height="90" viewBox="0 0 680 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="blzConnGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#6C63FF"/>
+      <stop offset="50%" stop-color="#2563EB"/>
+      <stop offset="100%" stop-color="#059669"/>
+    </linearGradient>
+    <linearGradient id="blzBoxGrad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1D1536"/>
+      <stop offset="100%" stop-color="#0E0A1D"/>
+    </linearGradient>
+    <linearGradient id="blzBoxGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#141E38"/>
+      <stop offset="100%" stop-color="#090E1D"/>
+    </linearGradient>
+    <filter id="blzGlow" x="-10%" y="-10%" width="120%" height="120%">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feComposite in="SourceGraphic" in2="blur" operator="over"/>
+    </filter>
+  </defs>
+
+  <!-- Fondo base del diagrama con borde sutil -->
+  <rect x="1" y="1" width="678" height="88" rx="14" fill="#0C0A17" fill-opacity="0.8" stroke="#6C63FF" stroke-width="1" stroke-opacity="0.3"/>
+
+  <!-- Línea de Conexión de Tokens y Assets con Acento Gradiente -->
+  <path d="M 180 45 L 260 45" stroke="url(#blzConnGrad)" stroke-width="2" stroke-dasharray="4 4"/>
+  <path d="M 420 45 L 500 45" stroke="url(#blzConnGrad)" stroke-width="2" stroke-dasharray="4 4"/>
+
+  <!-- Flechas y Pulso en Tránsito -->
+  <polygon points="256,42 262,45 256,48" fill="#6C63FF"/>
+  <polygon points="496,42 502,45 496,48" fill="#34D399"/>
+  <circle cx="220" cy="45" r="3" fill="#A78BFA" filter="url(#blzGlow)"/>
+  <circle cx="460" cy="45" r="3" fill="#6EE7B7" filter="url(#blzGlow)"/>
+
+  <!-- 1. BLAZON SUITE (Izquierda) -->
+  <g transform="translate(16, 15)">
+    <rect width="164" height="60" rx="10" fill="url(#blzBoxGrad1)" stroke="#6C63FF" stroke-width="1.2" stroke-opacity="0.5"/>
+    <!-- Escudo Heráldico Blazon -->
+    <circle cx="28" cy="30" r="14" fill="#6C63FF" fill-opacity="0.25"/>
+    <path d="M 28 20 L 35 23 V 30 C 35 34.5 32 37 28 39 C 24 37 21 34.5 21 30 V 23 Z" fill="#A78BFA"/>
+    <text x="50" y="27" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="12">Blazon PowerPoint</text>
+    <text x="50" y="42" fill="#EDE9FE" font-family="JetBrains Mono, monospace" font-size="9" opacity="0.8">Add-in M365 &amp; Ribbon</text>
+  </g>
+
+  <!-- 2. STARKIO CLOUD AUTH (Centro) -->
+  <g transform="translate(260, 15)">
+    <rect width="160" height="60" rx="10" fill="url(#blzBoxGrad2)" stroke="#2563EB" stroke-width="1.2" stroke-opacity="0.5"/>
+    <!-- Ícono Candado / OAuth RBAC -->
+    <circle cx="28" cy="30" r="14" fill="#2563EB" fill-opacity="0.25"/>
+    <rect x="23" y="27" width="10" height="8" rx="2" fill="#60A5FA"/>
+    <path d="M 25 27 V 24 C 25 22.3 26.3 21 28 21 C 29.7 21 31 22.3 31 24 V 27" stroke="#93C5FD" stroke-width="1.5" fill="none"/>
+    <text x="48" y="27" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="12">Starkio Cloud Auth</text>
+    <text x="48" y="42" fill="#BFDBFE" font-family="JetBrains Mono, monospace" font-size="9" opacity="0.85">SSO &amp; RBAC Multi-Tenant</text>
+  </g>
+
+  <!-- 3. DESIGN SYSTEM CENTRAL (Derecha) -->
+  <g transform="translate(500, 15)">
+    <rect width="164" height="60" rx="10" fill="url(#blzBoxGrad1)" stroke="#059669" stroke-width="1.2" stroke-opacity="0.5"/>
+    <!-- Ícono Tokens / Paleta -->
+    <circle cx="28" cy="30" r="14" fill="#059669" fill-opacity="0.25"/>
+    <circle cx="25" cy="27" r="3" fill="#6C63FF"/>
+    <circle cx="31" cy="27" r="3" fill="#2563EB"/>
+    <circle cx="28" cy="33" r="3" fill="#34D399"/>
+    <text x="48" y="27" fill="#FFFFFF" font-family="Inter, sans-serif" font-weight="700" font-size="12">Tokens de Marca</text>
+    <text x="48" y="42" fill="#A7F3D0" font-family="JetBrains Mono, monospace" font-size="9" opacity="0.85">Paletas &amp; Tipografía Sync</text>
+  </g>
+</svg>
