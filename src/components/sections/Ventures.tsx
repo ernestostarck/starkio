@@ -12,11 +12,11 @@ import {
   Sparkles,
 } from "lucide-react";
 import {
-  CloudTelemetrySvg,
-  ManagerFleetSvg,
-  ShieldComplianceSvg,
+  IotTelemetrySvg,
+  BillingReceiptSvg,
+  WaterLawComplianceSvg,
   OfficeAddinSvg,
-  CloudAuthRbacSvg,
+  CloudDistributionSvg,
   DesignTokensSvg,
 } from "@/components/icons/IntegrationIcons";
 
@@ -55,7 +55,7 @@ const ventures: VentureItem[] = [
     shortDescription:
       "Gestión inteligente, telemetría y cobranza para cooperativas de Agua Potable Rural (APR).",
     description:
-      "Sistema de gestión inteligente y telemetría de red para comités y cooperativas de Agua Potable Rural (APR). Facturación de consumo, cobranza con puentes digitales (Webpay, Flow, Khipu), criptografía y anonimización Ley N° 21.719, e integración nativa con Starkio Cloud (API central de datos) y Starkio Manager (Centro de control y mantenimiento de flota para el Tech Lead).",
+      "Sistema integral de gestión inteligente y telemetría de red para comités y cooperativas de Agua Potable Rural (APR). Facturación automatizada de consumo, cobranza con pasarelas digitales (Webpay, Flow), toma de lecturas en terreno y cumplimiento normativo integral de la Ley N° 20.998 sobre Servicios Sanitarios Rurales (SSR), con reportería oficial ante la Dirección de Obras Hidráulicas (DOH).",
     status: "En Producción",
     statusType: "live",
     accent: "#34D399",
@@ -67,26 +67,26 @@ const ventures: VentureItem[] = [
     url: "http://localhost:3001",
     integrations: [
       {
-        name: "Starkio Cloud",
-        description: "Telemetría pasiva HTTPS y bus de eventos central",
-        SvgIcon: CloudTelemetrySvg,
+        name: "Telemetría & Red IoT",
+        description: "Monitoreo en tiempo real de caudales, niveles de estanque y presión",
+        SvgIcon: IotTelemetrySvg,
       },
       {
-        name: "Starkio Manager",
-        description: "Monitoreo de flota, alertas técnicas y diagnóstico",
-        SvgIcon: ManagerFleetSvg,
+        name: "Facturación & Cobranza",
+        description: "Emisión de boletas y pasarelas de recaudación digital (Webpay / Flow)",
+        SvgIcon: BillingReceiptSvg,
       },
       {
-        name: "Ley 21.719 & SSR 20.998",
-        description: "Protección de datos personales y reportes DOH",
-        SvgIcon: ShieldComplianceSvg,
+        name: "Ley N° 20.998 SSR · DOH",
+        description: "Cumplimiento normativo para APR y generación de informes oficiales",
+        SvgIcon: WaterLawComplianceSvg,
       },
     ],
     highlights: [
       "Catastro y toma de lecturas de medidor en terreno (PWA/Offline)",
       "Facturación mensual automatizada y pasarelas de pago digitales",
-      "Telemetría en tiempo real y diagnóstico Anti-RAT",
-      "Conectado nativamente al ecosistema Starkio",
+      "Telemetría en tiempo real: niveles de estanque, bombas y presión",
+      "Cumplimiento normativo de Servicios Sanitarios Rurales (Ley N° 20.998)",
     ],
   },
   {
@@ -98,7 +98,7 @@ const ventures: VentureItem[] = [
     shortDescription:
       "Plataforma de consistencia de marca y Add-in corporativo para presentaciones de alto impacto.",
     description:
-      "Plataforma de brand consistency y suite de diseño corporativo. Un add-in inteligente para Microsoft PowerPoint que transforma la identidad visual en un sistema automatizado y vivo, garantizando que cada propuesta comercial y reporte ejecutivo mantenga la excelencia de marca y tokens del holding.",
+      "Plataforma de brand consistency y suite de diseño corporativo. Un add-in inteligente para Microsoft PowerPoint que transforma la identidad visual en un sistema automatizado y vivo, garantizando que cada propuesta comercial y reporte ejecutivo mantenga la excelencia de marca y tokens corporativos de la organización.",
     status: "En Producción",
     statusType: "live",
     accent: "#6C63FF",
@@ -111,25 +111,25 @@ const ventures: VentureItem[] = [
     integrations: [
       {
         name: "Microsoft 365 Ribbon",
-        description: "Add-in nativo para PowerPoint & Office Suite",
+        description: "Add-in nativo para PowerPoint & suite ofimática",
         SvgIcon: OfficeAddinSvg,
       },
       {
-        name: "Starkio Cloud Auth",
-        description: "Autenticación corporativa multi-tenant con RBAC",
-        SvgIcon: CloudAuthRbacSvg,
+        name: "Distribución Cloud Corporativa",
+        description: "Sincronización segura y gestión de roles organizacionales",
+        SvgIcon: CloudDistributionSvg,
       },
       {
-        name: "Design System Central",
+        name: "Brand Hub Tokens",
         description: "Paletas dinámicas, tipografías y plantillas auditadas",
         SvgIcon: DesignTokensSvg,
       },
     ],
     highlights: [
       "Generación instantánea de diapositivas con identidad corporativa",
-      "Biblioteca de componentes y activos visuales aprobados",
+      "Biblioteca de activos visuales y componentes de diseño aprobados",
       "Sincronización en la nube para equipos comerciales y directivos",
-      "Integrado a la infraestructura central de Starkio Labs",
+      "Distribución centralizada con actualización en tiempo real",
     ],
   },
 ];
@@ -240,7 +240,7 @@ export default function Ventures() {
               Portafolio Starkio.
             </h2>
             <p className="mt-2 max-w-xl text-xs sm:text-sm leading-relaxed text-starkio-cloud/65">
-              Cada empresa del holding resuelve un problema esencial de alta complejidad, compartiendo la misma infraestructura tecnológica central: <strong className="text-white">Starkio Cloud</strong> y <strong className="text-white">Starkio Manager</strong>.
+              Cada empresa del holding resuelve un problema esencial de alta complejidad en industrias clave, con estándares de ingeniería de primer nivel y desarrollo tecnológico propietario.
             </p>
           </motion.div>
 
@@ -452,16 +452,16 @@ export default function Ventures() {
                         {active.description}
                       </p>
 
-                      {/* Bloque de Integración con Starkio Cloud & Starkio Manager */}
+                      {/* Bloque de Arquitectura Operativa y Flujo */}
                       {active.integrations && active.integrations.length > 0 && (
                         <div className="mt-8 pt-6 border-t border-white/10">
                           <div className="flex items-center justify-between mb-3">
                             <p className="text-xs uppercase tracking-wider font-semibold text-starkio-cloud/60 flex items-center gap-2">
                               <Activity className="size-3.5 text-[#34D399]" />
-                              Conexión con la Plataforma Central Starkio
+                              Arquitectura y Flujo de Operación Digital
                             </p>
                             <span className="text-[10px] font-semibold text-starkio-cloud/45 uppercase tracking-wider">
-                              MALLA DE INTEGRACIÓN ACTIVA
+                              ARQUITECTURA ACTIVA
                             </span>
                           </div>
 
@@ -470,7 +470,7 @@ export default function Ventures() {
                             <div className="mb-4 overflow-hidden rounded-xl border border-white/10 bg-black/35 p-1.5 shadow-xl">
                               <Image
                                 src={active.connectionSvg}
-                                alt={`Diagrama de integración de ${active.name} con Plataforma Central Starkio`}
+                                alt={`Diagrama de arquitectura y flujo operativo de ${active.name}`}
                                 width={700}
                                 height={96}
                                 className="w-full h-auto object-contain pointer-events-none"
@@ -558,24 +558,6 @@ export default function Ventures() {
                           </ul>
                         </div>
                       )}
-
-                      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs font-sans text-starkio-cloud/70 space-y-1">
-                        <div className="text-[11px] uppercase tracking-wider text-white/40 font-bold mb-2">
-                          Malla de Holding
-                        </div>
-                        <div className="flex justify-between">
-                          <span>API Central:</span>
-                          <span className="text-white">Starkio Cloud HTTPS</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Telemetría:</span>
-                          <span className="text-white">Starkio Manager v2.4</span>
-                        </div>
-                        <div className="flex justify-between">
-                          <span>Cifrado:</span>
-                          <span className="text-white">TLS 1.3 / AES-256</span>
-                        </div>
-                      </div>
                     </div>
                   </div>
                 </div>
@@ -629,7 +611,7 @@ export default function Ventures() {
         </div>
 
         <p className="mt-8 text-center text-xs text-starkio-cloud/35">
-          Ecosistema Starkio Labs SpA · Empresas conectadas a Starkio Cloud &amp; Starkio Manager.
+          Ecosistema Starkio Labs SpA · Tecnología propietaria construida para resolver problemas esenciales.
         </p>
       </div>
     </section>

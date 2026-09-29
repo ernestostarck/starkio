@@ -29,9 +29,9 @@ const holdingPillars = [
   },
   {
     number: "02",
-    title: "Malla Central Compartida",
+    title: "Arquitectura & Estándares Compartidos",
     description:
-      "Todas nuestras filiales (Aqualis, Blazon) operan sobre la misma base: Starkio Cloud para eventos y datos, y Starkio Manager para diagnóstico y soporte de flota.",
+      "Todas nuestras filiales (Aqualis, Blazon) operan con el mismo rigor de ingeniería: desarrollo de software propietario, alta disponibilidad y control técnico integral.",
     icon: Layers,
     accent: "#34D399",
     soft: "#A7F3D0",
@@ -52,7 +52,7 @@ const holdingPillars = [
 const holdingStats = [
   { label: "Propiedad Intelectual", value: "100%", sub: "Activos propios" },
   { label: "Empresas en Portafolio", value: "02", sub: "Aqualis & Blazon" },
-  { label: "Malla Tecnológica", value: "Central", sub: "Cloud + Manager" },
+  { label: "Arquitectura", value: "Propietaria", sub: "Desarrollo in-house" },
   { label: "Horizonte Operativo", value: "Perpetuo", sub: "Visión de largo plazo" },
 ];
 

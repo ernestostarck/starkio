@@ -33,7 +33,7 @@ const areas = [
     title: "Productos digitales construidos para escalar.",
     description:
       "Diseñamos y desarrollamos aplicaciones, APIs y plataformas que soportan el crecimiento del negocio desde su primera versión. Hogar de filiales como Aqualis (gestión hídrica y telemetría) y Blazon (consistencia de marca y diseño corporativo).",
-    services: ["Productos digitales (Aqualis)", "APIs e integraciones (Starkio Cloud)", "Plataformas escalables (Starkio Manager)"],
+    services: ["Productos digitales (Aqualis)", "APIs e integraciones cloud", "Plataformas escalables & SaaS"],
     accent: "#34D399",
     soft: "#A7F3D0",
     background: "from-[#0A1F1A] via-[#10382c] to-[#059669]/40",
