@@ -87,7 +87,7 @@ export default function About() {
           >
             <div className="flex items-center gap-2 mb-4">
               <span className="size-2 rounded-full bg-[#6C63FF] animate-pulse" />
-              <p className="text-xs font-mono tracking-widest text-starkio-cloud/50 uppercase">
+              <p className="text-xs font-semibold tracking-wider text-starkio-cloud/60 uppercase">
                 FILOSOFÍA DEL HOLDING · QUIÉNES SOMOS
               </p>
             </div>
@@ -115,14 +115,14 @@ export default function About() {
             {/* Manifiesto / Nota de Principio */}
             <div className="relative overflow-hidden rounded-2xl border border-white/15 bg-white/[0.03] p-5 sm:p-6 backdrop-blur-md shadow-xl">
               <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-[#6C63FF] to-[#34D399]" />
-              <p className="text-xs font-mono uppercase tracking-widest text-[#A78BFA] mb-2 flex items-center gap-2">
+              <p className="text-xs font-semibold uppercase tracking-wider text-[#A78BFA] mb-2 flex items-center gap-2">
                 <Sparkles className="size-3.5 text-[#A78BFA]" />
                 Tesis Fundacional
               </p>
               <blockquote className="text-sm sm:text-base italic text-starkio-cloud/90 leading-relaxed">
                 &ldquo;Construimos tecnología propietaria con la convicción de que cada producto debe ser un activo durable, rentable y esencial para quienes confían en él.&rdquo;
               </blockquote>
-              <div className="mt-3 flex items-center justify-between text-xs text-starkio-cloud/45 font-mono pt-3 border-t border-white/10">
+              <div className="mt-3 flex items-center justify-between text-xs text-starkio-cloud/55 pt-3 border-t border-white/10 font-medium">
                 <span>Starkio Labs SpA · Santiago, Chile</span>
                 <span className="text-[#34D399]">100% Propietario</span>
               </div>
@@ -156,7 +156,7 @@ export default function About() {
                     Starkio Labs SpA
                     <span className="size-1.5 rounded-full bg-[#34D399] animate-pulse" />
                   </h3>
-                  <p className="text-xs text-starkio-cloud/50 font-mono">
+                  <p className="text-xs text-starkio-cloud/60 font-medium">
                     Holding Tecnológico &amp; Operador
                   </p>
                 </div>
@@ -184,7 +184,7 @@ export default function About() {
               </div>
 
               {/* Malla Operativa Badge */}
-              <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-starkio-cloud/50">
+              <div className="mt-4 pt-4 border-t border-white/10 flex items-center justify-between text-[11px] text-starkio-cloud/60 font-medium">
                 <span className="flex items-center gap-1.5">
                   <CheckCircle2 className="size-3 text-[#34D399]" />
                   Ecosistema Operativo
@@ -214,7 +214,7 @@ export default function About() {
               <div className="text-xs font-semibold text-starkio-cloud/70 mb-0.5">
                 {stat.label}
               </div>
-              <div className="text-[11px] font-mono text-starkio-cloud/40">
+              <div className="text-[11px] text-starkio-cloud/45 font-medium">
                 {stat.sub}
               </div>
             </div>
@@ -224,7 +224,7 @@ export default function About() {
         {/* LOS TRES PILARES FUNDACIONALES DEL HOLDING */}
         <div>
           <div className="text-center max-w-2xl mx-auto mb-10">
-            <p className="text-xs font-mono tracking-widest text-[#34D399] uppercase mb-2">
+            <p className="text-xs font-semibold tracking-wider text-[#34D399] uppercase mb-2">
               ARQUITECTURA DE VALOR
             </p>
             <h3 className="text-2xl sm:text-3xl font-bold text-white tracking-tight">
@@ -250,7 +250,7 @@ export default function About() {
                 >
                   <div className="flex items-center justify-between mb-6">
                     <span
-                      className="font-mono text-xs font-bold px-2.5 py-1 rounded-full border"
+                      className="text-xs font-bold px-2.5 py-1 rounded-full border tracking-wide uppercase font-sans"
                       style={{
                         borderColor: `${pillar.accent}40`,
                         background: `${pillar.accent}15`,
@@ -288,7 +288,7 @@ export default function About() {
 
         {/* PIE DE SECCIÓN CON ENLACE DE CONTACTO */}
         <div className="mt-16 pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
-          <div className="flex items-center gap-2 text-starkio-cloud/50 font-mono">
+          <div className="flex items-center gap-2 text-starkio-cloud/60 font-medium">
             <span className="size-2 rounded-full bg-[#34D399]" />
             <span>Santiago de Chile · Operaciones Nacionales &amp; Expansión Regional</span>
           </div>

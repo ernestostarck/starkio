@@ -85,7 +85,7 @@ export default function Areas() {
         >
           <div className="flex items-center gap-2 mb-3">
             <span className="size-2 rounded-full animate-pulse" style={{ background: activeArea.accent }} />
-            <p className="text-xs font-mono tracking-widest text-starkio-cloud/45 uppercase">ÁREAS DE FOCO</p>
+            <p className="text-xs font-semibold tracking-wider text-starkio-cloud/60 uppercase">ÁREAS DE FOCO</p>
           </div>
           <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-starkio-cloud tracking-tight leading-tight">
             Tres disciplinas,<br />
@@ -128,7 +128,7 @@ export default function Areas() {
                 </div>
 
                 <div className="relative z-10 flex items-center justify-between">
-                  <span className="relative inline-flex rounded-full px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-mono" style={{ background: `${area.accent}22`, color: area.accent }}>
+                  <span className="relative inline-flex rounded-full px-3 py-1 text-[11px] font-bold tracking-wider uppercase font-sans" style={{ background: `${area.accent}22`, color: area.accent }}>
                     {area.label}
                   </span>
                   <div className="relative size-11 rounded-xl bg-black/40 border border-white/10 p-2 shadow-inner flex items-center justify-center">
@@ -173,7 +173,7 @@ export default function Areas() {
             <div className="relative z-10 grid gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
               <div>
                 <div className="mb-6 sm:mb-8 flex items-center justify-between">
-                  <span className="text-xs font-mono tracking-widest font-semibold uppercase" style={{ color: activeArea.soft }}>{activeArea.eyebrow}</span>
+                  <span className="text-xs sm:text-sm font-bold tracking-wider uppercase font-sans" style={{ color: activeArea.soft }}>{activeArea.eyebrow}</span>
                   <div className="size-14 sm:size-16 rounded-2xl bg-black/40 border border-white/20 p-2.5 sm:p-3 shadow-2xl backdrop-blur-md flex items-center justify-center">
                     {ActiveSvg ? <ActiveSvg className="size-full" /> : null}
                   </div>
@@ -194,11 +194,11 @@ export default function Areas() {
               </div>
 
               <div className="border-t border-white/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 backdrop-blur-[2px] rounded-2xl">
-                <p className="text-xs font-mono tracking-widest text-starkio-cloud/55 uppercase">CAPACIDADES</p>
+                <p className="text-xs font-semibold tracking-wider text-starkio-cloud/60 uppercase">CAPACIDADES</p>
                 <ul className="mt-4 space-y-3">
                   {activeArea.services.map((service, index) => (
                     <li key={service} className="flex items-center gap-3 text-xs sm:text-sm text-starkio-cloud/90 font-medium">
-                      <span className="font-mono text-xs font-bold" style={{ color: activeArea.accent }}>0{index + 1}</span>
+                      <span className="text-xs font-bold font-sans" style={{ color: activeArea.accent }}>0{index + 1}</span>
                       {service}
                     </li>
                   ))}

@@ -76,7 +76,7 @@ export default function Contact() {
         >
           <div className="inline-flex items-center gap-2 mb-3 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md">
             <span className="size-2 rounded-full bg-[#6C63FF] animate-pulse" />
-            <p className="text-xs font-mono tracking-widest text-starkio-cloud/60 uppercase">CONTACTO DIRECTO</p>
+            <p className="text-xs font-semibold tracking-wider text-starkio-cloud/70 uppercase">CONTACTO DIRECTO</p>
           </div>
           <h2 className="text-3xl sm:text-5xl font-extrabold text-starkio-cloud mb-4 tracking-tight">
             Trabajemos juntos.
@@ -97,7 +97,7 @@ export default function Contact() {
           <form onSubmit={handleSubmit} className="space-y-5 text-left">
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="contact-name" className="block text-xs font-mono font-medium text-starkio-cloud/70 mb-2">
+                <label htmlFor="contact-name" className="block text-xs font-medium text-starkio-cloud/80 mb-2">
                   Nombre completo
                 </label>
                 <input
@@ -120,7 +120,7 @@ export default function Contact() {
                 )}
               </div>
               <div>
-                <label htmlFor="contact-email" className="block text-xs font-mono font-medium text-starkio-cloud/70 mb-2">
+                <label htmlFor="contact-email" className="block text-xs font-medium text-starkio-cloud/80 mb-2">
                   Correo electrónico
                 </label>
                 <input
@@ -146,7 +146,7 @@ export default function Contact() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
               <div>
-                <label htmlFor="contact-company" className="block text-xs font-mono font-medium text-starkio-cloud/70 mb-2">
+                <label htmlFor="contact-company" className="block text-xs font-medium text-starkio-cloud/80 mb-2">
                   Empresa u Organización (opcional)
                 </label>
                 <input
@@ -159,20 +159,18 @@ export default function Contact() {
                 />
               </div>
               <div>
-                <label htmlFor="contact-area" className="block text-xs font-mono font-medium text-starkio-cloud/70 mb-2">
+                <label htmlFor="contact-area" className="block text-xs font-medium text-starkio-cloud/80 mb-2">
                   Área de interés
                 </label>
                 <select
                   id="contact-area"
                   value={form.service_area}
                   onChange={(e) => setForm({ ...form, service_area: e.target.value })}
-                  className="w-full bg-[#131322] border border-white/15 rounded-xl px-4 py-3 text-sm text-starkio-cloud focus:outline-none focus:border-[#6C63FF] focus:ring-2 focus:ring-[#6C63FF]/30 transition-all cursor-pointer"
+                  className="w-full bg-[#131322] border border-white/15 rounded-xl px-4 py-3 text-sm text-starkio-cloud focus:outline-none focus:border-[#6C63FF] focus:ring-2 focus:ring-[#6C63FF]/30 transition-all cursor-pointer font-sans"
                 >
+                  <option value="data">Data Analytics &amp; Pipelines</option>
                   <option value="software">Software Engineering &amp; Plataformas</option>
                   <option value="ai">Inteligencia Artificial &amp; Modelos</option>
-                  <option value="data">Data Analytics &amp; Pipelines</option>
-                  <option value="aqualis">Filial Aqualis (Infraestructura Hídrica)</option>
-                  <option value="blazon">Filial Blazon (Brand Consistency &amp; Add-in)</option>
                 </select>
               </div>
             </div>
@@ -189,7 +187,7 @@ export default function Contact() {
             />
 
             <div>
-              <label htmlFor="contact-message" className="block text-xs font-mono font-medium text-starkio-cloud/70 mb-2">
+              <label htmlFor="contact-message" className="block text-xs font-medium text-starkio-cloud/80 mb-2">
                 Descripción del proyecto o requerimiento
               </label>
               <textarea
@@ -231,7 +229,7 @@ export default function Contact() {
               </p>
             )}
 
-            <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] font-mono text-starkio-cloud/45">
+            <div className="pt-3 border-t border-white/10 flex items-center justify-between text-[11px] text-starkio-cloud/55 font-medium">
               <span>Tiempo de respuesta habitual: &lt; 24 hrs</span>
               <span className="text-[#34D399]">Transmisión segura</span>
             </div>

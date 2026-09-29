@@ -68,7 +68,7 @@ export default function Footer() {
             <div className="max-w-xl">
               <div className="flex items-center gap-2 mb-2">
                 <span className="size-2 rounded-full bg-[#34D399] animate-pulse" />
-                <span className="text-[11px] font-mono tracking-widest text-[#34D399] uppercase font-semibold">
+                <span className="text-[11px] tracking-wider text-[#34D399] uppercase font-semibold">
                   STARKIO LABS · HOLDING TECNOLÓGICO
                 </span>
               </div>
@@ -117,9 +117,9 @@ export default function Footer() {
               <div>
                 <span className="text-xl font-extrabold tracking-tight text-white flex items-center gap-1">
                   Stark<span className="text-[#6C63FF]">io</span>
-                  <span className="text-xs text-starkio-cloud/40 font-mono font-normal ml-1">LABS</span>
+                  <span className="text-xs text-starkio-cloud/45 font-semibold ml-1">LABS</span>
                 </span>
-                <p className="text-[10px] font-mono text-starkio-cloud/45 uppercase tracking-wider -mt-1">
+                <p className="text-[10px] text-starkio-cloud/50 uppercase tracking-wider -mt-1 font-medium">
                   Holding &amp; Operador Tecnológico
                 </p>
               </div>
@@ -160,7 +160,7 @@ export default function Footer() {
 
           {/* COLUMNA 2: ECOSISTEMA & DISCIPLINAS (3 COLUMNAS) */}
           <div className="lg:col-span-3">
-            <h4 className="text-xs font-mono font-bold tracking-widest text-starkio-cloud/45 uppercase mb-4">
+            <h4 className="text-xs font-bold tracking-wider text-starkio-cloud/60 uppercase mb-4">
               Disciplinas &amp; Áreas
             </h4>
             <ul className="space-y-3">
@@ -188,7 +188,7 @@ export default function Footer() {
 
           {/* COLUMNA 3: EMPRESAS DEL HOLDING (2 COLUMNAS) */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-mono font-bold tracking-widest text-starkio-cloud/45 uppercase mb-4">
+            <h4 className="text-xs font-bold tracking-wider text-starkio-cloud/60 uppercase mb-4">
               Portafolio
             </h4>
             <ul className="space-y-3">
@@ -206,7 +206,7 @@ export default function Footer() {
                           {item.label}
                         </span>
                         <span
-                          className="text-[9px] font-mono font-bold uppercase px-1.5 py-0.2 rounded-full"
+                          className="text-[10px] font-bold uppercase px-1.5 py-0.2 rounded-full font-sans"
                           style={{
                             background: `${item.badgeColor}20`,
                             color: item.badgeColor,
@@ -228,7 +228,7 @@ export default function Footer() {
 
           {/* COLUMNA 4: GOBERNANZA & LEGAL (2 COLUMNAS) */}
           <div className="lg:col-span-2">
-            <h4 className="text-xs font-mono font-bold tracking-widest text-starkio-cloud/45 uppercase mb-4">
+            <h4 className="text-xs font-bold tracking-wider text-starkio-cloud/60 uppercase mb-4">
               Legal
             </h4>
             <ul className="space-y-2.5">
@@ -251,17 +251,17 @@ export default function Footer() {
         </div>
 
         {/* LÍNEA DE CRÉDITOS, COPYRIGHT Y BOTÓN DE RETORNO SUPERIOR */}
-        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-starkio-cloud/40">
+        <div className="border-t border-white/10 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-starkio-cloud/45">
           <div className="flex flex-wrap items-center gap-2 text-center sm:text-left">
             <span>© {new Date().getFullYear()} Starkio Labs SpA.</span>
             <span className="hidden sm:inline text-white/20">•</span>
             <span>Todos los derechos reservados.</span>
             <span className="hidden sm:inline text-white/20">•</span>
-            <span className="font-mono text-[11px]">Santiago, Chile</span>
+            <span className="text-[11px] font-medium">Santiago, Chile</span>
           </div>
 
           <div className="flex items-center gap-4">
-            <span className="text-[11px] font-mono text-starkio-cloud/30">
+            <span className="text-[11px] text-starkio-cloud/35 font-medium">
               Building what endures.
             </span>
 

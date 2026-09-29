@@ -16,7 +16,7 @@ export default function Hero() {
           className="inline-flex items-center gap-2 mb-6 sm:mb-8 px-3.5 py-1.5 rounded-full border border-white/10 bg-white/[0.03] backdrop-blur-md"
         >
           <span className="w-1.5 h-1.5 rounded-full bg-[#34D399] animate-pulse" />
-          <span className="text-[11px] sm:text-xs text-starkio-cloud/60 tracking-widest font-mono font-medium uppercase">
+          <span className="text-[11px] sm:text-xs text-starkio-cloud/70 tracking-wider font-semibold uppercase">
             DATA · SOFTWARE · AI
           </span>
           <span className="w-1.5 h-1.5 rounded-full bg-[#6C63FF]" />

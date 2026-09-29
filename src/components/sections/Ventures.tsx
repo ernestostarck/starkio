@@ -232,7 +232,7 @@ export default function Ventures() {
                 className="size-2 rounded-full animate-pulse"
                 style={{ background: active.accent }}
               />
-              <p className="text-xs font-mono tracking-widest text-starkio-cloud/50 uppercase">
+              <p className="text-xs font-semibold tracking-wider text-starkio-cloud/60 uppercase">
                 EMPRESAS &amp; DIVISIONES DEL HOLDING
               </p>
             </div>
@@ -283,7 +283,7 @@ export default function Ventures() {
                     />
                     <span className="relative z-10">{venture.name}</span>
                     <span
-                      className="relative z-10 font-mono text-[10px] px-1.5 py-0.2 rounded-md"
+                      className="relative z-10 font-bold text-[10px] px-1.5 py-0.2 rounded-md"
                       style={{
                         background: isSelected ? `${venture.accent}35` : "rgba(255,255,255,0.06)",
                         color: isSelected ? venture.soft : "rgba(255,255,255,0.4)",
@@ -307,7 +307,7 @@ export default function Ventures() {
               >
                 <ChevronLeft className="size-4" />
               </button>
-              <span className="font-mono text-xs px-2 text-white/60 font-semibold select-none">
+              <span className="text-xs px-2 text-white/70 font-bold select-none">
                 0{activeIndex + 1} / 0{ventures.length}
               </span>
               <button
@@ -392,7 +392,7 @@ export default function Ventures() {
                       >
                         {active.tag}
                       </span>
-                      <span className="text-xs font-mono text-starkio-cloud/50">
+                      <span className="text-xs text-starkio-cloud/55 font-medium">
                         DIAPOSITIVA 0{activeIndex + 1} / 0{ventures.length}
                       </span>
                     </div>
@@ -407,7 +407,7 @@ export default function Ventures() {
                       />
                       <span>{active.status}</span>
                       <span className="text-white/30">|</span>
-                      <span className="text-white/80 font-mono text-[11px]">Ecosistema Conectado</span>
+                      <span className="text-white/80 font-medium text-[11px]">Ecosistema Conectado</span>
                     </div>
                   </div>
 
@@ -456,11 +456,11 @@ export default function Ventures() {
                       {active.integrations && active.integrations.length > 0 && (
                         <div className="mt-8 pt-6 border-t border-white/10">
                           <div className="flex items-center justify-between mb-3">
-                            <p className="text-xs font-mono uppercase tracking-widest text-starkio-cloud/50 flex items-center gap-2">
+                            <p className="text-xs uppercase tracking-wider font-semibold text-starkio-cloud/60 flex items-center gap-2">
                               <Activity className="size-3.5 text-[#34D399]" />
                               Conexión con la Plataforma Central Starkio
                             </p>
-                            <span className="text-[10px] font-mono text-starkio-cloud/40 uppercase">
+                            <span className="text-[10px] font-semibold text-starkio-cloud/45 uppercase tracking-wider">
                               MALLA DE INTEGRACIÓN ACTIVA
                             </span>
                           </div>
@@ -534,7 +534,7 @@ export default function Ventures() {
                     {/* Columna Lateral: Propósito y Capacidades Principales */}
                     <div className="border-t border-white/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0 space-y-6">
                       <div>
-                        <p className="text-xs font-mono tracking-widest text-starkio-cloud/45 uppercase">
+                        <p className="text-xs font-semibold tracking-wider text-starkio-cloud/60 uppercase">
                           PROPÓSITO DE LA FILIAL
                         </p>
                         <p className="mt-2 text-lg sm:text-xl font-medium leading-snug" style={{ color: active.soft }}>
@@ -559,7 +559,7 @@ export default function Ventures() {
                         </div>
                       )}
 
-                      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs font-mono text-starkio-cloud/60 space-y-1">
+                      <div className="rounded-xl border border-white/10 bg-white/[0.02] p-4 text-xs font-sans text-starkio-cloud/70 space-y-1">
                         <div className="text-[11px] uppercase tracking-wider text-white/40 font-bold mb-2">
                           Malla de Holding
                         </div>
@@ -605,14 +605,14 @@ export default function Ventures() {
                 />
               );
             })}
-            <span className="ml-2 font-mono text-xs text-starkio-cloud/50">
+            <span className="ml-2 text-xs font-medium text-starkio-cloud/55">
               {active.name} ({activeIndex + 1} de {ventures.length})
             </span>
           </div>
 
           {/* Ayuda de navegación y botón de siguiente empresa */}
           <div className="flex items-center gap-4">
-            <span className="hidden sm:inline-block text-[11px] font-mono text-starkio-cloud/40">
+            <span className="hidden sm:inline-block text-[11px] text-starkio-cloud/45 font-medium">
               Desliza horizontalmente o usa las flechas ← →
             </span>
 
