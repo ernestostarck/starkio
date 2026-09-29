@@ -236,7 +236,7 @@ export default function Ventures() {
                 EMPRESAS &amp; DIVISIONES DEL HOLDING
               </p>
             </div>
-            <h2 className="text-display-md font-bold text-starkio-cloud tracking-tight">
+            <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-starkio-cloud tracking-tight leading-tight">
               Portafolio Starkio.
             </h2>
             <p className="mt-2 max-w-xl text-xs sm:text-sm leading-relaxed text-starkio-cloud/65">
@@ -366,7 +366,7 @@ export default function Ventures() {
                     paginate(-1);
                   }
                 }}
-                className={`relative isolate overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br ${active.background} p-6 sm:p-10 md:p-12 shadow-2xl cursor-grab active:cursor-grabbing select-none`}
+                className={`relative isolate overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br ${active.background} p-5 sm:p-8 md:p-12 shadow-2xl cursor-grab active:cursor-grabbing select-none`}
               >
                 {/* Acentos de iluminación ambiental */}
                 <div
@@ -507,12 +507,12 @@ export default function Ventures() {
                       )}
 
                       {/* Botones de Acción de la Empresa */}
-                      <div className="mt-8 flex flex-wrap items-center gap-4">
+                      <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3 sm:gap-4">
                         <a
                           href={active.url || "#contact"}
                           target={active.url?.startsWith("http") ? "_blank" : undefined}
                           rel={active.url?.startsWith("http") ? "noopener noreferrer" : undefined}
-                          className="inline-flex items-center gap-2 rounded-xl px-5 py-3 text-sm font-bold transition-all shadow-lg hover:brightness-110 cursor-pointer"
+                          className="inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold transition-all shadow-lg hover:brightness-110 cursor-pointer text-center"
                           style={{
                             background: active.soft,
                             color: "#08080F",
@@ -524,7 +524,7 @@ export default function Ventures() {
 
                         <a
                           href="#contact"
-                          className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 px-4 py-3 text-sm font-semibold text-starkio-cloud transition-colors cursor-pointer"
+                          className="inline-flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/5 hover:bg-white/10 px-4 py-3 text-sm font-semibold text-starkio-cloud transition-colors cursor-pointer text-center"
                         >
                           Contactar equipo {active.name}
                         </a>

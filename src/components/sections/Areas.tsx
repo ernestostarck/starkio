@@ -67,20 +67,36 @@ export default function Areas() {
   const ActiveSvg = activeArea.SvgIcon;
 
   return (
-    <section id="areas" className="border-t border-white/5 px-6 py-28 sm:py-32">
-      <div className="mx-auto max-w-6xl">
+    <section id="areas" className="relative border-t border-white/5 px-4 sm:px-6 py-24 sm:py-32 overflow-hidden">
+      {/* Resplandor ambiental de fondo reactivo al área seleccionada */}
+      <div
+        className="absolute top-1/4 -left-32 w-[600px] h-[500px] rounded-full blur-[140px] pointer-events-none transition-colors duration-700 opacity-20"
+        style={{ background: activeArea.accent }}
+      />
+      <div className="absolute bottom-10 right-0 w-[500px] h-[400px] bg-[#6C63FF]/10 rounded-full blur-[130px] pointer-events-none" />
+
+      <div className="mx-auto max-w-6xl relative z-10">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
-          className="mb-12"
+          className="mb-10 sm:mb-12"
         >
-          <p className="mb-3 text-xs tracking-widest text-starkio-cloud/40">ÁREAS DE FOCO</p>
-          <h2 className="text-display-md font-bold text-starkio-cloud">Tres disciplinas,<br />un mismo estándar.</h2>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="size-2 rounded-full animate-pulse" style={{ background: activeArea.accent }} />
+            <p className="text-xs font-mono tracking-widest text-starkio-cloud/45 uppercase">ÁREAS DE FOCO</p>
+          </div>
+          <h2 className="text-3xl sm:text-5xl md:text-6xl font-extrabold text-starkio-cloud tracking-tight leading-tight">
+            Tres disciplinas,<br />
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-white/90 to-starkio-cloud/50">
+              un mismo estándar.
+            </span>
+          </h2>
         </motion.div>
 
-        <div className="mb-5 grid gap-4 md:grid-cols-3" role="tablist" aria-label="Áreas de servicio">
+        {/* Tarjetas selectoras de disciplinas */}
+        <div className="mb-6 grid gap-4 grid-cols-1 sm:grid-cols-2 md:grid-cols-3" role="tablist" aria-label="Áreas de servicio">
           {areas.map((area) => {
             const isSelected = area.id === selected;
             const CardSvg = area.SvgIcon;
@@ -94,27 +110,28 @@ export default function Areas() {
                 onClick={() => setSelected(area.id)}
                 whileHover={{ y: -4 }}
                 whileTap={{ scale: 0.99 }}
-                className={`relative min-h-[250px] overflow-hidden rounded-xl border p-7 text-left transition-colors ${area.cardBackground} ${
-                  isSelected ? "border-white/30" : "border-white/5 hover:border-white/15"
+                className={`relative min-h-[200px] sm:min-h-[240px] overflow-hidden rounded-2xl border p-6 sm:p-7 text-left transition-all duration-300 cursor-pointer ${area.cardBackground} ${
+                  isSelected ? "border-white/35 shadow-xl shadow-black/40 ring-1 ring-white/20" : "border-white/10 hover:border-white/20 hover:bg-white/[0.04]"
                 }`}
                 style={isSelected ? { boxShadow: `inset 0 -3px 0 ${area.accent}` } : undefined}
               >
                 <span className="absolute -right-9 -top-10 size-32 rounded-full opacity-25" style={{ background: area.accent }} />
                 <div className="flex items-center justify-between">
-                  <span className="relative inline-flex rounded-full px-3 py-1 text-[10px] font-semibold tracking-widest" style={{ background: `${area.accent}22`, color: area.accent }}>
+                  <span className="relative inline-flex rounded-full px-3 py-1 text-[10px] font-bold tracking-widest uppercase font-mono" style={{ background: `${area.accent}22`, color: area.accent }}>
                     {area.label}
                   </span>
                   <div className="relative size-11 rounded-xl bg-black/40 border border-white/10 p-2 shadow-inner flex items-center justify-center">
                     {CardSvg ? <CardSvg className="size-full" /> : null}
                   </div>
                 </div>
-                <h3 className="relative mt-4 text-3xl font-bold tracking-tight text-starkio-cloud">{area.cardTitle}</h3>
-                <p className="relative mt-2 max-w-[250px] text-sm leading-relaxed" style={{ color: area.soft }}>{area.cardDescription}</p>
+                <h3 className="relative mt-4 text-2xl sm:text-3xl font-bold tracking-tight text-white">{area.cardTitle}</h3>
+                <p className="relative mt-2 text-xs sm:text-sm leading-relaxed" style={{ color: area.soft }}>{area.cardDescription}</p>
               </motion.button>
             );
           })}
         </div>
 
+        {/* Panel de detalle de la disciplina activa */}
         <AnimatePresence mode="wait">
           <motion.article
             key={activeArea.id}
@@ -124,26 +141,26 @@ export default function Areas() {
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
             transition={{ duration: 0.3 }}
-            className={`relative isolate overflow-hidden rounded-xl border border-white/10 bg-gradient-to-br ${activeArea.background} px-6 py-8 sm:px-10 sm:py-12`}
+            className={`relative isolate overflow-hidden rounded-3xl border border-white/15 bg-gradient-to-br ${activeArea.background} px-6 py-8 sm:px-10 sm:py-12 shadow-2xl`}
           >
-            <div className="absolute right-[-4rem] top-[-5rem] size-64 rounded-full opacity-20 blur-3xl" style={{ background: activeArea.accent }} />
+            <div className="absolute right-[-4rem] top-[-5rem] size-64 rounded-full opacity-25 blur-3xl pointer-events-none" style={{ background: activeArea.accent }} />
             <div className="relative grid gap-10 lg:grid-cols-[1.3fr_0.7fr] lg:items-end">
               <div>
-                <div className="mb-8 flex items-center justify-between">
-                  <span className="text-xs font-medium tracking-widest" style={{ color: activeArea.soft }}>{activeArea.eyebrow}</span>
+                <div className="mb-6 sm:mb-8 flex items-center justify-between">
+                  <span className="text-xs font-mono tracking-widest font-semibold uppercase" style={{ color: activeArea.soft }}>{activeArea.eyebrow}</span>
                   <div className="size-14 rounded-2xl bg-black/40 border border-white/20 p-2.5 shadow-2xl backdrop-blur-md flex items-center justify-center">
                     {ActiveSvg ? <ActiveSvg className="size-full" /> : null}
                   </div>
                 </div>
-                <h3 className="max-w-2xl text-3xl font-bold leading-tight tracking-tight text-starkio-cloud sm:text-5xl">
+                <h3 className="max-w-2xl text-2xl sm:text-4xl lg:text-5xl font-extrabold leading-tight tracking-tight text-starkio-cloud">
                   {activeArea.title}
                 </h3>
-                <p className="mt-5 max-w-xl text-sm leading-relaxed text-starkio-cloud/70 sm:text-base">
+                <p className="mt-4 sm:mt-5 max-w-xl text-sm sm:text-base leading-relaxed text-starkio-cloud/75 font-normal">
                   {activeArea.description}
                 </p>
                 <a
                   href="#contact"
-                  className="mt-8 inline-flex items-center gap-2 rounded-lg px-5 py-3 text-sm font-semibold text-void transition-transform hover:-translate-y-0.5"
+                  className="mt-8 inline-flex items-center justify-center gap-2 rounded-xl px-5 py-3 text-sm font-bold text-void transition-transform hover:-translate-y-0.5 shadow-lg w-full sm:w-auto cursor-pointer"
                   style={{ background: activeArea.soft }}
                 >
                   Hablemos de tu proyecto <ArrowDownRight className="size-4" aria-hidden="true" />
@@ -151,18 +168,18 @@ export default function Areas() {
               </div>
 
               <div className="border-t border-white/15 pt-6 lg:border-l lg:border-t-0 lg:pl-8 lg:pt-0">
-                <p className="text-xs tracking-widest text-starkio-cloud/45">CAPACIDADES</p>
+                <p className="text-xs font-mono tracking-widest text-starkio-cloud/45 uppercase">CAPACIDADES</p>
                 <ul className="mt-4 space-y-3">
                   {activeArea.services.map((service, index) => (
-                    <li key={service} className="flex items-center gap-3 text-sm text-starkio-cloud/85">
-                      <span className="font-mono text-xs" style={{ color: activeArea.accent }}>0{index + 1}</span>
+                    <li key={service} className="flex items-center gap-3 text-xs sm:text-sm text-starkio-cloud/85">
+                      <span className="font-mono text-xs font-bold" style={{ color: activeArea.accent }}>0{index + 1}</span>
                       {service}
                     </li>
                   ))}
                 </ul>
-                <div className="mt-9 flex items-center gap-3 border-t border-white/10 pt-5">
+                <div className="mt-8 sm:mt-9 flex items-center gap-3 border-t border-white/10 pt-5">
                   {activeArea.id === "data" ? <Database className="size-5" style={{ color: activeArea.accent }} aria-hidden="true" /> : <Workflow className="size-5" style={{ color: activeArea.accent }} aria-hidden="true" />}
-                  <p className="text-sm font-medium" style={{ color: activeArea.soft }}>{activeArea.metric}</p>
+                  <p className="text-xs sm:text-sm font-medium" style={{ color: activeArea.soft }}>{activeArea.metric}</p>
                 </div>
               </div>
             </div>
